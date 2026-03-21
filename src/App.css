@@ -290,8 +290,36 @@ body {
   box-sizing: border-box;
 }
 
+.page-content .title {
+  font-family: "TimesB";
+  color: rgb(0, 0, 122);
+  align-items: center;
+  display: flex;
+  height: 30px;
+  overflow: hidden
+}
+
+.page-content .box {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.page-content .bg {
+  z-index: -100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 @keyframes wiggle {
   0%, 100% { transform: translateY(var(--amp)); }
   50% { transform: translateY(calc(var(--amp) * -1)); }
+}
+
+@keyframes rotate {
+  0%, 100%{transform: rotate(20deg);}
+  50% {transform: rotate(-20deg);}
 }

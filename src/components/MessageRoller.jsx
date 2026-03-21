@@ -23,7 +23,7 @@ function MessageRoller({dict}) {
   return <div ref={boxRef} className="message-roller">
     <span ref={textRef}
       style={{ transform: `translateX(${offset}px)` }}>
-      this is just a test
+      <h3>this is just a test</h3>
     </span>
   </div>
 }
