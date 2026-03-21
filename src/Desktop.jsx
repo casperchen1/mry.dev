@@ -34,6 +34,7 @@ function Desktop() {
   return <div 
     className="desktop"
     onClick={() => setSelectedIcon(null)}>
+      <span style={{position: "absolute", right: "10px"}}>(c) 2026 mry. All Rights Reserved.</span>
     {icons.map(icon => (
         <AppIcon 
           key={icon.id}

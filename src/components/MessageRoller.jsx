@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 
-function MessageRoller() {
+function getRandomItem(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function MessageRoller({dict}) {
   const [offset, setOffset] = useState(0)
   const textRef = useRef(null)
   const boxRef = useRef(null)
