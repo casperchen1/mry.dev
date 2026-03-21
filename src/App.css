@@ -1,0 +1,291 @@
+@font-face {
+  font-family: 'W95FA';
+  src: url('./assets/W95FA.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Times';
+  src: url('./assets/Pixel\ Times.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'TimesB';
+  src: url('./assets/Pixel\ Times\ Bold.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'SS';
+  src: url('./assets/ms-sans-serif-6.otf') format('opentype');
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: 'W95FA', sans-serif;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: #000000;
+}
+
+.desktop {
+  position: relative;
+  background-color: #018281;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 4 / 3;
+  width: min(100vw, calc(100vh * (4 / 3)));
+  height: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.app-icon {
+  width: 100px;
+  height: 100px;
+  margin: 8px;
+  position: relative;
+  display: flex;
+  object-fit: cover;
+  text-align: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.app-icon img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.app-icon .label {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.page.closed {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  transform: scale(0);
+  border: 2px solid;
+  border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
+  background-color: rgb(168, 168, 168);
+  padding: 0px;
+}
+
+.page.open {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 500px;
+  transform: scale(1);
+  border: 2px solid;
+  border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
+  background-color: rgb(168, 168, 168);
+  padding: 0px;
+}
+
+.page-tag {
+  display: flex;
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 20px;
+  background: rgb(76, 76, 76);
+  color: white;
+  padding: 0px 2px 0px 0px;
+  box-sizing: border-box;
+  justify-content: left;
+  align-items: center;
+  user-select: none;
+}
+
+.page-tag.focused{
+  background: rgb(0, 0, 122);
+}
+
+.page-tag img {
+  height: 30px;
+  width: auto;
+}
+
+.close-btn {
+  margin-left: auto;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  color: black;
+  border: 2px solid;
+  border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
+  background-color: rgb(168, 168, 168);
+  cursor: pointer;
+}
+
+.close-btn.pressed {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  color: black;
+  border: 2px solid;
+  border-color: rgb(39, 39, 39) rgb(230, 230, 230) rgb(230, 230, 230) rgb(39, 39, 39);
+  background-color: rgb(141, 141, 141);
+}
+
+.toolbar {
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: rgb(168, 168, 168);
+  border: 2px solid rgb(230, 230, 230);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.toolbar .start {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.toolbar .clock {
+  margin-left: auto;
+  right: 0px;
+  width: 80px;
+  height: 30px;
+  background-color: rgb(168, 168, 168);
+  border: 2px solid;
+  border-color: #8c8c8c white white #8c8c8c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab {
+  box-sizing: border-box;
+  justify-content: left;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin: 4px;
+  position: flex;
+  max-width: 150px;
+  width: 100%;
+  height: 80%;
+  border: 2px solid;
+  border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
+  background-color: rgb(168, 168, 168);
+  cursor: pointer;
+}
+
+.tab.focused{
+  background-color: rgb(186, 186, 186);
+  border: 2px solid;
+  border-color: #707070 white white #707070;
+  cursor: auto;
+}
+
+.tab img {
+  height: 100%;
+  width: auto;
+}
+
+.page-content {
+  font-family: 'SS';
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: black;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.page-content::-webkit-scrollbar {
+  width: 17px;
+}
+
+/* Page Scrollbar */
+.page-content::-webkit-scrollbar-track {
+  background-color: #d0d0d0;
+}
+
+.page-content::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.page-content::-webkit-scrollbar-thumb:active {
+  border-left: 2px solid #404040;
+  border-top: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.page-content::-webkit-scrollbar-button {
+  height: 17px;
+  background: #c0c0c0;
+
+  border-left: 2px solid #ffffff;
+  border-top: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.page-content::-webkit-scrollbar-button:active {
+  border-left: 2px solid #404040;
+  border-top: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.page-content::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url('./assets/up-arrow.png');
+  background-position: center;
+  background-size: 30px 30px;  /* adjust to fit button */
+}
+
+.page-content::-webkit-scrollbar-button:vertical:increment {
+  background-image: url('./assets/down-arrow.png');
+  background-position: center;
+  background-size: 30px 30px;  /* adjust to fit button */
+}
+
+.message-roller {
+  font-family: TimesB;
+  background-image: url('./assets/clouds.png');
+  background-size: 100% auto;
+  color: rgb(0, 0, 122);
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
