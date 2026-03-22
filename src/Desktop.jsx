@@ -2,24 +2,26 @@ import { useState } from "react"
 import "./App.css"
 import AppIcon from "./components/AppIcon.jsx"
 import Page from "./components/Page.jsx"
-import ToolBar from "./components/ToolBar.jsx"
-import MessageRoller from "./components/MessageRoller.jsx"
+import ToolBar from "./components/ToolBar.jsx" 
 
 import com from "./assets/com.png"
 import networks from "./assets/networks.png"
 import projects from "./assets/bin.png"
+import journal from "./assets/journal.png"
 
 function Desktop() {
   const icons = [
     { id: 1, name: "About Me", src: com},
     { id: 2, name: "Connects", src: networks},
-    { id: 3, name: "Projects", src: projects}
+    { id: 3, name: "Projects", src: projects},
+    { id: 4, name: "Journal", src: journal}
   ]
 
   const pages = [
     {id: 1, tag: "About Me", size: {width: "600px", height: "400px"}, icon: icons[0]},
     {id: 2, tag: "Connects", size: {width: "800px", height: "500px"}, icon: icons[1]},
-    {id: 3, tag: "Projects", size: {width: "800px", height: "500px"}, icon: icons[2]}
+    {id: 3, tag: "Projects", size: {width: "800px", height: "500px"}, icon: icons[2]},
+    {id: 4, tag: "Journal", size: {width: "800px", height: "500px"}, icon: icons[3]}
   ]
 
   const [selectedIcon, setSelectedIcon] = useState(null);
@@ -34,7 +36,7 @@ function Desktop() {
   return <div 
     className="desktop"
     onClick={() => setSelectedIcon(null)}>
-      <span style={{position: "absolute", right: "10px"}}>(c) 2026 mry. All Rights Reserved.</span>
+      <span style={{position: "absolute", right: "10px"}}> 2026 mry. All Rights Reserved.</span>
     {icons.map(icon => (
         <AppIcon 
           key={icon.id}
