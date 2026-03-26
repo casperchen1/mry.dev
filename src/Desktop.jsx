@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./App.css"
-import AppIcon from "./components/AppIcon.jsx"
-import Page from "./components/Page.jsx"
-import ToolBar from "./components/ToolBar.jsx" 
+import AppIcon from "./components/DesktopUI/AppIcon.jsx"
+import Page from "./components/DesktopUI/Page.jsx"
+import ToolBar from "./components/DesktopUI/ToolBar.jsx" 
 
 import com from "./assets/com.png"
 import networks from "./assets/networks.png"
@@ -11,17 +11,17 @@ import journal from "./assets/journal.png"
 
 function Desktop() {
   const icons = [
-    { id: 1, name: "About Me", src: com},
+    { id: 1, name: "Home", src: com},
     { id: 2, name: "Connects", src: networks},
     { id: 3, name: "Projects", src: projects},
-    { id: 4, name: "Journal", src: journal}
+    { id: 4, name: "About Me", src: journal}
   ]
 
   const pages = [
-    {id: 1, tag: "About Me", size: {width: "600px", height: "400px"}, icon: icons[0]},
+    {id: 1, tag: "Home", size: {width: "600px", height: "400px"}, icon: icons[0]},
     {id: 2, tag: "Connects", size: {width: "800px", height: "500px"}, icon: icons[1]},
     {id: 3, tag: "Projects", size: {width: "800px", height: "500px"}, icon: icons[2]},
-    {id: 4, tag: "Journal", size: {width: "800px", height: "500px"}, icon: icons[3]}
+    {id: 4, tag: "About Me", size: {width: "960px", height: "540px"}, icon: icons[3]}
   ]
 
   const [selectedIcon, setSelectedIcon] = useState(null);
@@ -33,10 +33,36 @@ function Desktop() {
 
   const [topZIndex, setTopZIndex] = useState(100)
 
+  const desktopRef = useRef(null)
+
+  function openPopups(id) { 
+    return () => {
+      setFocusedTab(id)
+      setActivePopups(prev => {
+        const newArr = [...prev]
+        newArr[id - 1] = true;
+        return newArr
+      })
+      setActiveTabs(prev => {
+        const arr = [...prev]
+        if(!prev.includes(id)) {
+          arr.push(id)
+        }
+        return arr
+      })
+    }
+  }
+
+  useEffect(() => {
+    openPopups(1)()
+  } ,[])
+
   return <div 
     className="desktop"
-    onClick={() => setSelectedIcon(null)}>
-      <span style={{position: "absolute", right: "10px"}}> 2026 mry. All Rights Reserved.</span>
+    onClick={() => setSelectedIcon(null)}
+    ref={desktopRef}
+    >
+      <span style={{position: "absolute", right: "10px"}}> (c) 2026 mry. All Rights Reserved.</span>
     {icons.map(icon => (
         <AppIcon 
           key={icon.id}
@@ -47,22 +73,7 @@ function Desktop() {
             e.stopPropagation()
             setSelectedIcon(icon.id)
           }}
-          openPopups={(e) => {
-            e.stopPropagation()
-            setFocusedTab(icon.id)
-            setActivePopups(prev => {
-              const newArr = [...prev]
-              newArr[icon.id - 1] = true;
-              return newArr
-            })
-            setActiveTabs(prev => {
-                const arr = [...prev]
-                if(!prev.includes(icon.id)) {
-                  arr.push(icon.id)
-                }
-                return arr
-              })
-          }}
+          openPopups={openPopups(icon.id)}
         />
     ))}
 
@@ -91,6 +102,7 @@ function Desktop() {
         }}
         topZIndex={topZIndex}
         iconSrc={page.icon.src}
+        desktopRef={desktopRef}
       />
     ))}
 

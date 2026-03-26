@@ -1,11 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import PageTag from "./PageTag"
-import PageContent from "./PageContent"
+import PageContent from "../PageContent"
 
-function Page({key, tag, size, setFocused, opened, focused, closePopup, topZIndex, iconSrc}) {
+function Page({key, tag, size, setFocused, opened, focused, closePopup, topZIndex, iconSrc, desktopRef}) {
   const [isDragging, setIsDragging] = useState(false)
   const [myPos, setMyPos] = useState({x: 0, y: 0})
   const [offset, setOffset] = useState({x: 0, y: 0})
+
+  const pageRef = useRef(null)
+
+  useEffect(() => {
+    setMyPos({x: desktopRef.current.offsetWidth / 2 - pageRef.current.offsetWidth / 2, 
+      y: desktopRef.current.offsetHeight / 2 - pageRef.current.offsetHeight / 2})
+  }, [desktopRef])
 
   const handleMouseDown = (e) => {
     setFocused()
@@ -32,6 +39,7 @@ function Page({key, tag, size, setFocused, opened, focused, closePopup, topZInde
     transition: isDragging ? "none" : "0.2s linear",
     zIndex: focused && topZIndex
   }}
+  ref={pageRef}
   >
     <PageTag tag={tag} 
       closePopup={closePopup} 

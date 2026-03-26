@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import start from "../assets/start.png"
-import start_pressed from "../assets/start_pressed.png"
+import start from "../../assets/start.png"
+import start_pressed from "../../assets/start_pressed.png"
 import Tab from "./Tab"
 
 function timeToString(time) {
