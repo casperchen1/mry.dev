@@ -4,7 +4,7 @@ function getRandomItem(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function MessageRoller({dict}) {
+function MessageRoller({background, font, color}) {
   const [offset, setOffset] = useState(0)
   const textRef = useRef(null)
   const boxRef = useRef(null)
@@ -20,7 +20,7 @@ function MessageRoller({dict}) {
     return () => clearInterval(timer) 
   }, [])
   
-  return <div ref={boxRef} className="message-roller">
+  return <div ref={boxRef} className="message-roller" style={{backgroundImage: background, fontFamily: font, color: color}}>
     <span ref={textRef}
       style={{ transform: `translateX(${offset}px)` }}>
       <h3>this is just a test</h3>

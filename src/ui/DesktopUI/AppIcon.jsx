@@ -1,4 +1,4 @@
-function AppIcon({key, name, src, selected, onClick, openPopups}) {
+function AppIcon({name, src, selected, onClick, openPopups}) {
   const img = src;
 
   const selectFilter = "sepia(180%) saturate(800%) hue-rotate(190deg) brightness(90%) contrast(90%)"

@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Desktop from './Desktop.jsx'
+import App from './app/App'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Desktop/>
+    <App />
   </StrictMode>,
 )

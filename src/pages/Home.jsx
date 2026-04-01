@@ -6,8 +6,8 @@ import free from "../assets/free.gif"
 import computer from "../assets/computer.gif"
 import win95 from "../assets/win95.gif"
 
-import MessageRoller from "./MessageRoller"
-import WiggleText from "./WiggleText"
+import MessageRoller from "../ui/PageUI/MessageRoller"
+import WiggleText from "../ui/PageUI/WiggleText"
 
 function Home() {
   return <div className="page-content">

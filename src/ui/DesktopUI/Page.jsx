@@ -1,8 +1,8 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, Suspense } from "react"
 import PageTag from "./PageTag"
-import PageContent from "../PageContent"
+import PageWrapper from "../PageUI/PageWrapper"
 
-function Page({key, tag, size, setFocused, opened, focused, closePopup, topZIndex, iconSrc, desktopRef}) {
+function Page({id, tag, size, focusTab, opened, focused, closePopup, topZIndex, iconSrc, desktopRef}) {
   const [isDragging, setIsDragging] = useState(false)
   const [myPos, setMyPos] = useState({x: 0, y: 0})
   const [offset, setOffset] = useState({x: 0, y: 0})
@@ -15,7 +15,7 @@ function Page({key, tag, size, setFocused, opened, focused, closePopup, topZInde
   }, [desktopRef])
 
   const handleMouseDown = (e) => {
-    setFocused()
+    focusTab(id)
     setIsDragging(true)
     setOffset({x: e.clientX - myPos.x, y: e.clientY - myPos.y})
   }
@@ -30,7 +30,8 @@ function Page({key, tag, size, setFocused, opened, focused, closePopup, topZInde
     }
   }
 
-  return <div className={`page ${opened ? "open" : "closed"}`}
+  return <Suspense fallback="loading">
+  <div className={`page ${opened ? "open" : "closed"}`}
   style={{
     width: size[0], 
     height: size[1],
@@ -49,8 +50,9 @@ function Page({key, tag, size, setFocused, opened, focused, closePopup, topZInde
       focused={focused}
       iconSrc={iconSrc}
     />
-    <PageContent tag={tag} />
+    <PageWrapper tag={tag} />
   </div>
+  </Suspense>
 }
 
 export default Page

@@ -6,7 +6,7 @@ import Tab from "./Tab"
 function timeToString(time) {
   let hours = time.getHours()
   const minutes = String(time.getMinutes()).padStart(2, '0');
-  const AMPM = hours >= 12 ? "AM" : "PM"
+  const AMPM = hours >= 12 ? " PM" : " AM"
   
   hours = hours % 12
   hours = hours === 0 ? 12 : hours;
