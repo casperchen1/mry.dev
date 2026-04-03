@@ -2,8 +2,20 @@ import { useEffect, useState, useRef, Suspense } from "react"
 import PageTag from "./PageTag"
 import PageWrapper from "../PageUI/PageWrapper"
 
-function Page({id, tag, size, focusTab, opened, focused, closePopup, topZIndex, iconSrc, desktopRef}) {
-  const [isDragging, setIsDragging] = useState(false)
+function Page({
+  id, 
+  tag, 
+  size, 
+  focusTab, 
+  opened, 
+  focused, 
+  closePopup, 
+  topZIndex, 
+  iconSrc, 
+  desktopRef, 
+  mousePos,
+  draggingWindow, 
+  setDraggingWindow}) {
   const [myPos, setMyPos] = useState({x: 0, y: 0})
   const [offset, setOffset] = useState({x: 0, y: 0})
 
@@ -14,20 +26,15 @@ function Page({id, tag, size, focusTab, opened, focused, closePopup, topZIndex, 
       y: desktopRef.current.offsetHeight / 2 - pageRef.current.offsetHeight / 2})
   }, [desktopRef])
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = () => {
     focusTab(id)
-    setIsDragging(true)
-    setOffset({x: e.clientX - myPos.x, y: e.clientY - myPos.y})
+    setDraggingWindow(id)
+    setOffset({x: mousePos.x - myPos.x, y: mousePos.y - myPos.y})
   }
-
+  
   const handleMouseUp = () => {
-    setIsDragging(false)
-  }
-
-  const handleMouseMove = (e) => {
-    if(isDragging) {
-      setMyPos({x: e.clientX - offset.x, y: e.clientY - offset.y})
-    }
+    setMyPos({x: mousePos.x - offset.x, y: mousePos.y - offset.y})
+    setDraggingWindow(0)
   }
 
   return <Suspense fallback="loading">
@@ -35,9 +42,9 @@ function Page({id, tag, size, focusTab, opened, focused, closePopup, topZIndex, 
   style={{
     width: size[0], 
     height: size[1],
-    left: myPos.x,
-    top: myPos.y,
-    transition: isDragging ? "none" : "0.2s linear",
+    left: draggingWindow == id ? mousePos.x - offset.x : myPos.x,
+    top: draggingWindow == id ? mousePos.y - offset.y : myPos.y,
+    transition: draggingWindow == id ? "none" : "0.2s linear",
     zIndex: focused && topZIndex
   }}
   ref={pageRef}
@@ -46,7 +53,6 @@ function Page({id, tag, size, focusTab, opened, focused, closePopup, topZIndex, 
       closePopup={closePopup} 
       handleMouseDown={handleMouseDown}
       handleMouseUp={handleMouseUp}
-      handleMouseMove={handleMouseMove}
       focused={focused}
       iconSrc={iconSrc}
     />

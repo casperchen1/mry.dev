@@ -3,12 +3,19 @@ import { useState } from "react";
 export function useDesktopManager(appCount) {
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [activePopups, setActivePopups] = useState(Array(appCount).fill(false))
+
+  const [mousePos, setMousePos] = useState({x: 0, y: 0})
+  const [draggingWindow, setDraggingWindow] = useState(0)
   
   const [activeTabs, setActiveTabs] = useState([])
   
   const [focusedTab, setFocusedTab] = useState(0)
   
   const [topZIndex, setTopZIndex] = useState(100)
+
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY })
+  }
 
   const openPopups = (id) => { 
     return () => {
@@ -42,12 +49,16 @@ export function useDesktopManager(appCount) {
   }
 
   return {
+    mousePos,
+    handleMouseMove,
     selectedIcon,
     setSelectedIcon,
     activePopups,
     setActivePopups,
     activeTabs,
     setActiveTabs,
+    draggingWindow, 
+    setDraggingWindow,
     focusedTab,
     setFocusedTab,
     topZIndex,

@@ -1,12 +1,17 @@
 import { useState } from "react"
 import nukoForwardRoll from "../assets/nukoForwardRoll.gif"
 
+import PageToolbar from "../ui/PageUI/PageToolbar"
 import NavButton from "../ui/PageUI/NavButton"
+
+import { updateLogs } from "../constants/updateLogs"
 
 function AboutMe() {
   const [currentPage, setCurrentPage] = useState("Home") 
 
-  return <div className="page-content" 
+  return <>
+  <PageToolbar />
+  <div className="page-content" 
   style={{backgroundImage: "url(/src/assets/omori_bg3.png)",
     backgroundSize: "30%"
   }}>
@@ -48,7 +53,9 @@ function AboutMe() {
             <hr />
             <strong>Update Log</strong>
             <div className="text-box">
-              <strong>2026/03/27</strong>: This page was created!
+              {updateLogs.map(log => (
+                <span><strong>{log.date}:</strong> {log.log}</span>
+              ))}
             </div>
           </div>
         </div>
@@ -61,6 +68,7 @@ function AboutMe() {
       </div>
     </div>
   </div>
+  </>
 }
 
 export default AboutMe

@@ -437,6 +437,9 @@ body {
   box-sizing: border-box;
   background-color: rgb(220, 223, 230);
   border: 1px solid rgb(191, 191, 194);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   overflow: auto;
 }
 
@@ -451,4 +454,15 @@ body {
   border: thick double #3e2f57;
   border-radius: 8px;
   box-sizing: border-box;
+}
+
+.page-toolbar {
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #a9a9a9;
+  border-bottom: 2px solid #a9a9a9;
+  display: flex;
+  gap: 16px;
+  padding: 4px 8px;
 }

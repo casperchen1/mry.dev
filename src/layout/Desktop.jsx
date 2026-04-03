@@ -15,6 +15,8 @@ function Desktop() {
   return <div 
     className="desktop"
     onClick={() => desktopManager.setSelectedIcon(null)}
+    onMouseMove={desktopManager.handleMouseMove}
+    onMouseUp={() => { desktopManager.setDraggingWindow(0)} }
     ref={desktopRef}
     >
       <span style={{position: "absolute", right: "10px"}}> (c) 2026 mry. All Rights Reserved.</span>
@@ -45,9 +47,12 @@ function Desktop() {
           e.stopPropagation()
           desktopManager.closePopup(page.id)
         }}
+        mousePos={desktopManager.mousePos}
         topZIndex={desktopManager.topZIndex}
         iconSrc={page.icon.src}
         desktopRef={desktopRef}
+        draggingWindow={desktopManager.draggingWindow}
+        setDraggingWindow={desktopManager.setDraggingWindow}
       />
     ))}
 
