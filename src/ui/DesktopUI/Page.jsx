@@ -44,8 +44,8 @@ function Page({
     height: size[1],
     left: draggingWindow == id ? mousePos.x - offset.x : myPos.x,
     top: draggingWindow == id ? mousePos.y - offset.y : myPos.y,
-    transition: draggingWindow == id ? "none" : "0.2s linear",
-    zIndex: focused && topZIndex
+    zIndex: focused && topZIndex,
+    transition: draggingWindow == id ? "none" : "0.15s linear"
   }}
   ref={pageRef}
   >
@@ -57,6 +57,7 @@ function Page({
       iconSrc={iconSrc}
     />
     <PageWrapper tag={tag} />
+    <div className="page-toolbar" style={{borderTop: "none"}}></div>
   </div>
   </Suspense>
 }

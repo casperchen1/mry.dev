@@ -60,9 +60,7 @@ export function useDesktopManager(appCount) {
     draggingWindow, 
     setDraggingWindow,
     focusedTab,
-    setFocusedTab,
     topZIndex,
-    setTopZIndex,
     openPopups,
     closePopup,
     focusTab

@@ -10,7 +10,14 @@ import MessageRoller from "../ui/PageUI/MessageRoller"
 import WiggleText from "../ui/PageUI/WiggleText"
 
 function Home() {
-  return <div className="page-content">
+  return <>
+  <div className="page-toolbar">
+      <span><u>F</u>ile</span>
+      <span><u>E</u>dit</span>
+      <span><u>V</u>iew</span>
+      <span><u>H</u>elp</span>
+  </div>
+  <div className="page-content">
     <div style={{textAlign: "center", color: "rgb(0, 0, 122)"}}>
       <h1>WELCOME TO MRY.DEV!</h1>
       <br />
@@ -59,6 +66,7 @@ function Home() {
       <img src={free} alt="" />
     </div>
   </div>
+  </>
 }
 
 export default Home
