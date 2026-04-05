@@ -64,10 +64,11 @@ function AboutMe() {
         </div>
       </div>
       <div className="footer">
-
       </div>
     </div>
   </div>
+  <div className="page-toolbar"
+  style={{borderTop: "none", borderLeft: "none"}}></div>
   </>
 }
 

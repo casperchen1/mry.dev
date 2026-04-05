@@ -53,7 +53,7 @@ function Home({desktopManager}) {
             alignItems: "flex-start"
           }}>
             <img src={lightbulb} alt="" style={{width: "20px", height: "20px", objectFit: "contain"}} />
-            <div style={{maxWidth: "90%"}}>
+            <div style={{flex: "1"}}>
             <strong>Did you know...</strong>
             <br />
             <br />
@@ -73,7 +73,7 @@ function Home({desktopManager}) {
           gap: "12px",
           padding: "0px 20px"
         }}>
-          <WindowButton text="More Tips" handleClick={() => setTip(randomItem(tips))} />
+          <WindowButton text="Next Tip" handleClick={() => setTip(randomItem(tips))} />
           <WindowButton text="Close" handleClick={() => {desktopManager.closePopup(defaultPageID)}} />
         </div>
       </div>
