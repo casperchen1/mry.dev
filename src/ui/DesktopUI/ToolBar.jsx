@@ -14,7 +14,7 @@ function timeToString(time) {
   return `${hours}:${minutes} ${AMPM}`
 }
 
-function ToolBar({pages, focusedTab, activeTabs, setFocusedTab}) {
+function ToolBar({pages, focusedTab, activeTabs, focusTab}) {
   const [time, setTime] = useState(new Date())
   const [startPressed, setStartPressed] = useState(false)
 
@@ -39,7 +39,7 @@ function ToolBar({pages, focusedTab, activeTabs, setFocusedTab}) {
         key={tab}
         name={pages[tab - 1].tag}
         handleClick={() => {
-          setFocusedTab(tab)
+          focusTab(tab)
         }}
         focused={focusedTab === tab}
         iconSrc={pages[tab - 1].icon.src}

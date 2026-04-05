@@ -57,7 +57,7 @@ function Page({
       iconSrc={iconSrc}
     />
     <PageWrapper tag={tag} />
-    <div className="page-toolbar" style={{borderTop: "none"}}></div>
+    <div className="page-toolbar" style={{borderTop: "none", borderLeft: "none"}}></div>
   </div>
   </Suspense>
 }

@@ -462,6 +462,7 @@ body {
 }
 
 .page-toolbar {
+  font-size: 14px;
   background-color: #c0c0c0;
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;

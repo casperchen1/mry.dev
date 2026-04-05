@@ -1,5 +1,5 @@
 export default function PageToolbar() {
-  return <div className="flexbox" style={{fontFamily: "W95FA", fontSize: "14px"}}>
+  return <div className="flexbox" style={{fontFamily: "W95FA"}}>
     <div className="page-toolbar">
       <span><u>F</u>ile</span>
       <span><u>E</u>dit</span>
@@ -18,7 +18,7 @@ export default function PageToolbar() {
         Adress
     </div>
     <div className="win-panel"
-    style={{margin: "4px", width: "100%", padding: "0px 2px"}}
+    style={{margin: "4px", width: "100%", padding: "0px 2px", fontSize: "14px"}}
     >
       https://mry.dev/about-me
     </div>

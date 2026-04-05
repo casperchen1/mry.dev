@@ -1,4 +1,5 @@
 import { useRef } from "react"
+
 import AppIcon from "../ui/DesktopUI/AppIcon.jsx"
 import Page from "../ui/DesktopUI/Page.jsx"
 import ToolBar from "../ui/DesktopUI/ToolBar.jsx" 
@@ -62,7 +63,7 @@ function Desktop() {
       ))}
       activeTabs={desktopManager.activeTabs}
       focusedTab={desktopManager.focusedTab}
-      setFocusedTab={desktopManager.setFocusedTab}
+      focusTab={desktopManager.focusTab}
     />
   </div>
 }
