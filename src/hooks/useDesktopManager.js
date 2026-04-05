@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { defaultPageID } from "../constants/desktopConfig";
 
 export function useDesktopManager(appCount) {
   const [selectedIcon, setSelectedIcon] = useState(null);
@@ -33,6 +35,10 @@ export function useDesktopManager(appCount) {
     }
   }
 
+  useEffect(() => {
+    openPopups(defaultPageID)()
+  }, [])
+
   const closePopup = (id) => {
     setActivePopups(prev => {
       const next = [...prev]
@@ -45,7 +51,7 @@ export function useDesktopManager(appCount) {
 
   const focusTab = (id) => {
     setFocusedTab(id)
-    setTopZIndex(topZIndex + 1)
+    setTopZIndex(prev => prev + 1)
   }
 
   return {

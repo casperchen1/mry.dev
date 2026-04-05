@@ -15,7 +15,8 @@ function Page({
   desktopRef, 
   mousePos,
   draggingWindow, 
-  setDraggingWindow}) {
+  setDraggingWindow,
+  desktopManager}) {
   const [myPos, setMyPos] = useState({x: 0, y: 0})
   const [offset, setOffset] = useState({x: 0, y: 0})
 
@@ -56,8 +57,7 @@ function Page({
       focused={focused}
       iconSrc={iconSrc}
     />
-    <PageWrapper tag={tag} />
-    <div className="page-toolbar" style={{borderTop: "none", borderLeft: "none"}}></div>
+    <PageWrapper tag={tag} desktopManager={desktopManager} />
   </div>
   </Suspense>
 }

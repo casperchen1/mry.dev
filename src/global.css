@@ -125,6 +125,7 @@ body {
 }
 
 .close-btn {
+  user-select: none;
   margin-left: auto;
   display: flex;
   justify-content: center; 
@@ -134,7 +135,7 @@ body {
   color: black;
   border: 2px solid;
   border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
-  background-color: rgb(168, 168, 168);
+  background-color: #c0c0c0;
   cursor: pointer;
 }
 
@@ -472,4 +473,26 @@ body {
   gap: 16px;
   padding: 4px 8px;
   box-sizing: border-box;
+}
+
+.window-btn {
+  user-select: none;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  color: black;
+  border: 2px solid;
+  border-color: rgb(230, 230, 230) rgb(39, 39, 39) rgb(39, 39, 39) rgb(230, 230, 230);
+  background-color: #c0c0c0;
+  cursor: pointer;
+  box-sizing: border-box;
+  flex: 1;
+  padding: 2px 0px
+}
+
+.window-btn.pressed {
+  color: black;
+  border: 2px solid;
+  border-color: rgb(39, 39, 39) rgb(230, 230, 230) rgb(230, 230, 230) rgb(39, 39, 39);
+  background-color: rgb(141, 141, 141);
 }

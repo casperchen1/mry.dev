@@ -4,6 +4,7 @@ import projects from "../assets/bin.png"
 import journal from "../assets/journal.png"
 import internet from "../assets/internet.png"
 
+export const defaultPageID = 1
 
 export const icons = [
   { id: 1, name: "Home", src: com},

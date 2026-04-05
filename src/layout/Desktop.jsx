@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef } from "react"
 
 import AppIcon from "../ui/DesktopUI/AppIcon.jsx"
 import Page from "../ui/DesktopUI/Page.jsx"
@@ -54,6 +54,7 @@ function Desktop() {
         desktopRef={desktopRef}
         draggingWindow={desktopManager.draggingWindow}
         setDraggingWindow={desktopManager.setDraggingWindow}
+        desktopManager={desktopManager}
       />
     ))}
 
